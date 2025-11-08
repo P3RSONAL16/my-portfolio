@@ -1,3 +1,4 @@
+// public/scripts/animations/footer.js
 import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -6,7 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (!logo || !info) return;
 
-    // Estado inicial idéntico al CSS @keyframes
+    // Estado inicial
     gsap.set([logo, info], {
         y: 100,
         scaleY: 0.7,
@@ -19,10 +20,9 @@ window.addEventListener("DOMContentLoaded", () => {
         y: 0,
         scaleY: 1,
         opacity: 1,
-        duration: 1,          // igual que en CSS (1s)
-        ease: "power1.inOut", // igual que "ease-in-out"
-        delay: 1.5,           // igual que animate-footer-info
-   
+        duration: 1,
+        ease: "power1.inOut",
+        delay: 1.5,
     });
 
     // Animación del logo
@@ -32,7 +32,6 @@ window.addEventListener("DOMContentLoaded", () => {
         opacity: 1,
         duration: 1,
         ease: "power1.inOut",
-        delay: 2,           // igual que animate-footer-logo
-     
+        delay: 2,
     });
 });
