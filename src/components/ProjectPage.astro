@@ -6,12 +6,12 @@ import "../styles/projectPage.css";
 <!-- ===================== Header ===================== -->
 <section class="fixed w-full z-50">
     <div class="relative flex justify-end p-10 md:p-10">
-        <a
+        
             <a
-                href="/"
+            href="/"
             class="group cursor-pointer p-2 rounded-full border-2 border-white bg-transparent transition-all duration-500 hover:bg-white hover:scale-110">
             <img
-                    src="/img/icons/Arrow_return.svg"
+                src="img/icons/Arrow_return.svg"
                 alt="volver"
                 class="w-8 select-none invert transition duration-500 group-hover:invert-0"/>
         </a>
@@ -24,7 +24,6 @@ import "../styles/projectPage.css";
     <!-- ============================================================ -->
     <section class="relative w-full mt-[130px] mb-[14vw] pointer-events-none h-[clamp(380px,60vh,900px)] mainBanner">
         <h1 class="projectTitle absolute top-[10px] m-12 text-transparent font-Druck-Bold z-30 will-change-transform stroke-text"
-            <h1 class="projectTitle absolute top-[10px] m-12 text-transparent font-Druck-Bold z-30 will-change-transform stroke-text"
             style="font-size: clamp(2rem, 8vw, 8rem); width: clamp(60%, 80vw, 60%); -webkit-text-stroke: 1px #fff;">
             {project.title}
         </h1>
@@ -246,6 +245,4 @@ import "../styles/projectPage.css";
 
 
 <!-- Animaciones GSAP.JS -->
-<script type="module">
-  import "/src/scripts/animations/projectPage.js";
-</script>
+<script type="module" src="scripts/animations/projectPage.js"></script>
