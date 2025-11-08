@@ -1,7 +1,7 @@
 import { transitionEnabledOnThisPage } from 'astro:transitions/client';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import gsap from 'gsap';
+import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
 
 // Esperamos a que el DOM esté completamente cargado antes de ejecutar el script.
 window.addEventListener('DOMContentLoaded', () => {
@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const config = {
         canvasBg: '#110f10',              // Color de fondo del canvas
         // modelPath: '/models/engel.glb', 
-        // modelPath: '/models/sphinx.glb', 
+        modelPath: '/models/sphinx.glb', 
         metalness: 0.5,                   // Brillo metálico del material
         roughness: 0.75,                  // Rugosidad (0 = espejo, 1 = mate)
         baseZoom: 0.75,                   // Escala base de la cámara según el tamaño del modelo
