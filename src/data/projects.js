@@ -28,9 +28,9 @@ export const projects = [
     text: `"Ubermosh" explora una experiencia digital intensa con un diseño cargado de energía y contraste, combinando música, luz y movimiento en una interfaz que refleja la adrenalina del universo cyberpunk.`,
     technologies: "Este proyecto fue desarrollado utilizando HTML para la estructura del sitio, CSS para el diseño responsivo y estilización, y GitHub para el control de versiones. node.js para el back-end",
     images: [
-      "../img/UBERMOSH/UBERMOSH-PREVIEW.png",
-      "../img/UBERMOSH/UBERMOSH-PREVIEW.png",
-      "../img/UBERMOSH/Captura de pantalla 2025-10-26 174631.png",
+      "./img/UBERMOSH/UBERMOSH-PREVIEW.png",
+      "./img/UBERMOSH/UBERMOSH-PREVIEW.png",
+      "./img/UBERMOSH/Captura de pantalla 2025-10-26 174631.png",
       "../img/UBERMOSH/Captura de pantalla 2025-10-26 174654.png",
       "/img/UBERMOSH/Captura de pantalla 2025-10-26 174714.png",
       "/img/UBERMOSH/Captura de pantalla 2025-10-26 174754.png",
