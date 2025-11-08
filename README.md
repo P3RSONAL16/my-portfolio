@@ -15,6 +15,7 @@ my-portfolio/
 ├─ public/
 │  ├─ img/
 │  ├─ models/
+│  ├─ scripts/
 │  └─ fonts/
 ├─ src/
 │  ├─ data/
