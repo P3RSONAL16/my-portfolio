@@ -23,7 +23,7 @@ export const projects = [
     title: "Ubermosh",
     year: "2025",
     href: "projects/ubermosh",
-    img: "img/UBERMOSH/UBERMOSH-PREVIEW.png",
+    img: "/img/UBERMOSH/UBERMOSH-PREVIEW.png",
     description: "Un proyecto visual inspirado en la estética cyberpunk, velocidad y caos controlado.",
     text: `"Ubermosh" explora una experiencia digital intensa con un diseño cargado de energía y contraste, combinando música, luz y movimiento en una interfaz que refleja la adrenalina del universo cyberpunk.`,
     technologies: "Este proyecto fue desarrollado utilizando HTML para la estructura del sitio, CSS para el diseño responsivo y estilización, y GitHub para el control de versiones. node.js para el back-end",
