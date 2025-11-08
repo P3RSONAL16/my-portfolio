@@ -1,22 +1,33 @@
 ---
-// Layout.astro
+// Importar el CSS para que Tailwind se compile y se inyecte
 import "../styles/global.css";
+
 const { title = "M.A.J - Portfolio" } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <link rel="icon" href="/favicon.ico" />
-  </head>
-  <body class="bg-black text-white antialiased">
-    <slot name="header" />
-    <main><slot /></main>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
+  </head>
+
+  <body class="bg-black text-white antialiased overflow-x-hidden">
+    <canvas class="fixed z-[-1]"></canvas>
+    <slot name="header" />
+    <slot />
+    <slot name="footer" />
+
+    
     <!-- SCRIPTS (estáticos en public/scripts, se ejecutan SOLO en navegador) -->
     <script type="module" src="scripts/lenis.js"></script>
-    <!-- <script type="module" src="scripts/gsap-setup.js"></script> -->
+    <script type="module" src="scripts/3d.js"></script>
+    <script type="module" src="scripts/gsap-setup.js"></script>
+    <script type="module" src="scripts/animations/header_off_on.js"></script>
+
   </body>
 </html>
