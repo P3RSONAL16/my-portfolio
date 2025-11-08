@@ -1,6 +1,5 @@
 // header_off_on.js
-
-import { gsap } from "gsap";
+import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
 
 // Seleccionamos el header
 const header = document.querySelector("header");

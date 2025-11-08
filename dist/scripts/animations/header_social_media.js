@@ -1,4 +1,4 @@
-import { gsap } from "gsap";
+import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const iconButton = document.getElementById("iconButton");
