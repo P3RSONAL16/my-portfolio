@@ -1,0 +1,54 @@
+<footer id="footer" class="fixed bottom-0 left-0 z-100 w-full max-h-screen flex transform transition-transform duration-1000 ease-in-out pointer-events-none ">
+  <!-- Logo -->
+  <a id="logoHeight"
+    href="./index.html"
+    class="absolute left-[3%] -top-[90%] text-[2.7rem] font-STRRETCH-SANS opacity-0 animate-footer-logo text-white no-underline hover:text-transparent hover:[-webkit-text-stroke:1px_white] cursor-pointer transition duration-300 pointer-events-auto">Mario <br />A.J.</a>
+
+  <!-- Info -->
+  <div id="footerInfo" class="w-screen px-14 py-5 text-[14px] opacity-0 animate-footer-info">
+    
+    <div class="flex justify-between flex-wrap gap-4">
+      <!-- Left section -->
+      <div class="flex">
+        <!-- Contact info -->
+        <div class="flex mr-10 font-Akzidenz-black">
+          <ul class="list-none p-0 mr-10">
+            <li class="mb-2 text-sm">Web Developer & Design</li>
+            <li class="mb-2 text-sm">3D Artist - Autodidact</li>
+          </ul>
+          <ul class="list-none p-0">
+            <li class="mb-2 text-sm">España, Andalucía</li>
+            <li class="mb-2 text-sm">m2000mariojr@gmail.com</li>
+          </ul>
+        </div>
+
+        <!-- Links -->
+        <div>
+
+          <nav>
+            <ul class="list-none p-0 font-Akzidenz-black">
+              <li id="openAbout" class="mb-2 transform transition-transform duration-300 ease-in-out hover:scale-x-110">
+                <button id="aboutBtn" class="no-underline text-white cursor-pointer pointer-events-auto" role="menuitem">01 about</button>
+              </li>
+              <li id="openContact" class="mb-2 transform transition-transform duration-300 ease-in-out hover:scale-x-110">
+                <button id="contactBtn" class="no-underline text-white cursor-pointer pointer-events-auto" role="menuitem">02 contact</button>
+              </li>
+            </ul>
+
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-4">
+      <p class="m-0 font-Akzidenz-black text-[12px] text-white/60">© 2024 M.A.J All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Animaciones GSAP.JS -->
+<script type="module">
+  import "/src/scripts/animations/footer.js";
+</script>

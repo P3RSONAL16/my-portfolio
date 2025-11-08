@@ -1,0 +1,133 @@
+---
+const { title, year, href, img } = Astro.props;
+---
+
+<li class="project">
+  <div class="project-container relative inline-block animate-project-text">
+    <a href={href}
+      data-info={year}
+      class="relative inline-block text-transparent uppercase font-[Druk_Wide_Bold] [font-size:clamp(2rem,8vw,7rem)] tracking-[0.04em] leading-[1.1em] transition-colors duration-500 ease-in-out stroked-text hover:[stroked-text:hover] z-[2]">
+      {title}
+
+      <img src={img}
+        alt={`${title} preview`}
+        class="img-preview absolute w-[40rem] h-auto opacity-0 pointer-events-none transition-all duration-200 ease-in-out scale-95 -z-[1] [mask-image:radial-gradient(circle,rgba(0,0,0,1)_10%,rgba(0,0,0,0)_100%)] group-hover:opacity-100 group-hover:scale-110"/>
+    </a>
+  </div>
+</li>
+
+
+<style>
+/* Animación de entrada */
+@keyframes projectTextAnimation {
+  0% {
+    transform: translateY(1000px) rotate(-5deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.project-container {
+  animation: projectTextAnimation 2s ease forwards;
+}
+
+
+
+
+/* Pseudoelementos sin stroke */
+.project-container a:before,
+.project-container a:after {
+  -webkit-text-stroke: 0;
+  color: #fff;
+}
+
+/* Info antes del título */
+.project-container a:before {
+  content: attr(data-info);
+  position: absolute;
+  top: 20px;
+  left: -250px;
+  width: 200px;
+  text-align: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: 'Akzidenz Grotesk Black';
+}
+
+/* Línea decorativa después del título */
+.project-container a:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -50px;
+  width: 2px;
+  height: 0.85em;
+  background-color: #fff;
+  transform: rotate(25deg);
+}
+
+
+/* Imagen de preview solo aparece al hover del texto */
+.img-preview {
+  position: absolute;
+  width: 40rem;
+  height: auto;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.65);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 100%);
+}
+
+/* Solo aparece cuando hover sobre el link */
+.project-container a:hover .img-preview {
+  opacity: 1;
+  transform: scale(1.2);
+}
+</style>
+
+<script type="module">
+  const projects = document.querySelectorAll('.project-container');
+
+  projects.forEach((project) => {
+    const link = project.querySelector('a');
+    const img = project.querySelector('.img-preview');
+
+    let mouseX = 0, mouseY = 0; // posición real del cursor
+    let imgX = 0, imgY = 0;     // posición actual de la imagen
+    const ease = 0.15;          // suavidad/inercia (0-1, más bajo = más lenta)
+
+    function animate() {
+      // Lerp: suavizado de movimiento
+      imgX += (mouseX - imgX) * ease;
+      imgY += (mouseY - imgY) * ease;
+
+      img.style.left = `${imgX - img.offsetWidth / 2}px`; // centrar la imagen
+      img.style.top = `${imgY - img.offsetHeight / 2}px`;
+
+      requestAnimationFrame(animate);
+    }
+
+    animate(); // inicia la animación
+
+    link.addEventListener('mousemove', (e) => {
+      const rect = link.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
+
+    link.addEventListener('mouseenter', () => {
+      img.style.opacity = '1';
+      img.style.transform = 'scale(1.2)';
+    });
+
+    link.addEventListener('mouseleave', () => {
+      img.style.opacity = '0';
+      img.style.transform = 'scale(0.95)';
+    });
+  });
+</script>

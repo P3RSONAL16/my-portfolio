@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@theme {
+    --color-black: #110f10;
+    --color-white: #ffffff;
+
+    /* Configuración de colores para Tailwind */
+    --color-primary: var(--color-black);
+    --color-secondary: var(--color-white);
+    
+    /* Configuración de fuentes personalizadas para Tailwind */
+    --font-Druck-Bold: 'Druk Wide Bold';
+    --font-Druk-Medium: 'Druk Medium';
+    --font-Akzidenz-black: 'Akzidenz Grotesk Black';
+    --font-Akzidenz-roman: 'Akzidenz Grotesk Roman';
+    --font-STRRETCH-SANS: 'STRRETCH SANS';
+
+    --font-DecimaMonoProR: 'DecimaMonoProRegular';
+    --font-SatoshiVariable: 'SatoshiVariable';
+
+}
+
+/* ======= FUENTES PERSONALIZADAS ======= */
+/* Druk Wide Bold */
+@font-face {
+    font-family: 'Druk Wide Bold';
+    src: url('') format('otf'),
+         url('') format('woff'),
+         url('') format('woff2'),
+         url('/fonts/Druk_Collection/Druk_Wide_Family/DrukWide-Super-Trial.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Druk Medium */
+@font-face {
+    font-family: 'Druk Medium';
+    src: url('') format('otf'),
+         url('') format('woff'),
+         url('') format('woff2'),
+         url('/fonts/Druk_Collection/Druk_Family/Druk-Medium-Trial.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Akzidenz-grotesk-black */
+@font-face {
+    font-family: 'Akzidenz Grotesk Black';
+    src: url('') format('otf'),
+         url('') format('woff'),
+         url('') format('woff2'),
+         url('/fonts/akzidenzgrotesk/Akzidenz-grotesk-black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Akzidenz-grotesk-Roman */
+@font-face {
+    font-family: 'Akzidenz Grotesk Roman';
+    src: url('') format('otf'),
+         url('') format('woff'),
+         url('') format('woff2'),
+         url('/fonts/akzidenz/Akzidenz-grotesk-roman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* STRRETCH SANS  */
+@font-face {
+    font-family: 'STRRETCH SANS';
+    src: url('') format('otf'),
+         url('') format('woff'),
+         url('') format('woff2'),
+         url('/fonts/strretch-sans-free/STRRETCH\ SANS\ FREE.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/* --------------------!!!!!!!!???????? */
+/* DecimaMonoProRegular  */
+@font-face {
+    font-family: 'DecimaMonoProRegular';
+    src: url('') format('otf'),
+         url('') format('woff'),
+         url('') format('woff2'),
+         url('/fonts/DecimaMonoProRegular/DecimaMonoProRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Satoshi-Variable */
+@font-face {
+    font-family: 'SatoshiVariable';
+    src: url('') format('otf'),
+         url('') format('woff'),
+         url('') format('woff2'),
+         url('/fonts/Satoshi_Complete/Satoshi_Complete/Fonts/TTF/Satoshi-Variable.ttf') format('truetype');
+}
+
+
+/* ==================== */
+
+/* la barra de desplazamiento */
+::-webkit-scrollbar {
+    width:12px; 
+    
+}
+/* "track" de la barra (el area de fondo) */
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+/* "thumb" de la barra (la parte que se mueve) */
+::-webkit-scrollbar-thumb {
+    background-color: #757575;
+    border-radius: 10px; 
+    border: 3px solid #f1f1f1; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #131313;
+}
+
+
+
+
+/* Estilos globales */
+:root, html, body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+/* Hacemos que el body sea el que haga scroll (document scroll) */
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* Texto con stroke */
+.stroked-text {
+    -webkit-text-stroke: 1px white;
+}
+.stroked-text:hover {
+    color: white;
+    -webkit-text-stroke: 1px transparent;
+}
+
+
+/* Footer responsive */
+@media (max-width: 768px) {
+    #footer {
+        position: fixed !important;
+        top: 150px !important;
+        bottom: auto !important;
+        transform: translateY(0) !important;
+    }
+}

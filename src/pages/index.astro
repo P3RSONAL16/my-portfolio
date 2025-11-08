@@ -1,16 +1,25 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
 ---
+<Layout title="M.A.J - Portfolio">
+  <Header slot="header" />
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <section class="pt-24 container mx-auto px-6 py-6000">
+    <h1 class="text-4xl font-bold mb-6">Portfolio</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <article class="bg-gray-900 p-4 rounded">
+        <img src="/img/example.jpg" alt="example" class="w-full h-48 object-cover rounded mb-3" />
+        <h2 class="text-xl font-semibold">Project 1</h2>
+        <p class="text-sm text-gray-300">Descripción breve del proyecto.</p>
+      </article>
+
+      <article class="bg-gray-900 p-4 rounded">
+        <img src="/img/example.jpg" alt="example2" class="w-full h-48 object-cover rounded mb-3" />
+        <h2 class="text-xl font-semibold">Project 2</h2>
+        <p class="text-sm text-gray-300">Otra descripción.</p>
+      </article>
+    </div>
+  </section>
+</Layout>

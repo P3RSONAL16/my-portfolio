@@ -1,0 +1,133 @@
+---
+jekyll: false
+
+import Layout from "../../layouts/Layout.astro";
+import { projects3D } from "../../data/projects.js";
+---
+
+<Layout title="Gallery 3D | Portfolio">
+  <section class="project-Content text-white min-h-screen flex flex-col items-center bg-black relative">
+    <!-- Banner -->
+    <div class="mainBanner3D flex justify-center items-center w-full py-24 bg-black/30 backdrop-blur-sm">
+      <h1 class="projectTitle text-[clamp(2rem,5vw,4rem)] font-Druck-Bold tracking-wider uppercase">
+        GALLERY 3D
+      </h1>
+    </div>
+
+    <!-- Sección de previsualización -->
+    <section class="project-preview max-w-7xl mx-auto px-6 mt-16 text-center" id="section-project-preview">
+      <h3 class="title-description text-gray-300 text-[clamp(1rem,2vw,1.3rem)] font-SatoshiVariable mb-12">
+        Estos son algunos de los proyectos realizados en <span class="text-white font-bold">Blender</span>
+      </h3>
+
+      <!-- Galería -->
+      <div class="gallery grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        {projects3D.map((item) => (
+          <div
+            class="gallery-item overflow-hidden rounded-2xl hover:scale-[1.05] transition-transform duration-300 cursor-pointer"
+            data-src={item.src}
+          >
+            <img
+              class="gallery-img w-full h-full object-cover"
+              src={item.src}
+              alt={item.alt || "Render 3D"}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+
+      <h2 class="opinion font-SatoshiVariable mt-16 text-gray-400 text-lg italic">
+        “Aquí es donde puedes colocar una breve opinión sobre tus proyectos.”
+      </h2>
+    </section>
+
+    <!-- Modal para imagen ampliada -->
+    <div
+      id="imageModal"
+      class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50 backdrop-blur-sm"
+    >
+      <button
+        id="closeModal"
+        class="absolute top-6 right-6 text-white text-3xl font-bold hover:text-gray-300 transition"
+      >
+        &times;
+      </button>
+      <img id="modalImage" src="" alt="Imagen ampliada" class="max-w-[90%] max-h-[80vh] rounded-xl shadow-2xl object-contain" />
+    </div>
+  </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const closeModal = document.getElementById("closeModal");
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    // Validaciones: si falta algo, salimos sin lanzar error
+    if (!modal || !modalImage || !closeModal || galleryItems.length === 0) {
+      return;
+    }
+
+    // Aseguramos que modalImage sea realmente un <img>
+    if (!(modalImage instanceof HTMLImageElement)) {
+      console.warn("Elemento #modalImage no es una etiqueta <img>");
+      return;
+    }
+
+    // Abrir modal al hacer clic en una imagen
+    galleryItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const src = item.getAttribute("data-src");
+        if (!src) return;
+        // Aquí ya sabemos que modalImage es HTMLImageElement, así que .src existe
+        modalImage.src = src;
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden"; // Evitar scroll de fondo
+      });
+    });
+
+    // Cerrar modal (X)
+    closeModal.addEventListener("click", () => {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+      // opcional: limpiar src para liberar memoria
+      modalImage.src = "";
+    });
+    
+
+    // Cerrar modal al hacer clic fuera de la imagen
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+        document.body.style.overflow = "";
+        modalImage.src = "";
+      }
+    });
+
+    // Cerrar con Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+        modal.classList.add("hidden");
+        document.body.style.overflow = "";
+        modalImage.src = "";
+      }
+    });
+  });
+</script>
+</Layout>
+
+<style>
+  .gallery-item img {
+    transition: transform 0.6s ease, filter 0.6s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+
+  .mainBanner3D {
+    background-image: linear-gradient(to bottom right, #0f0e0f, #1a171a);
+  }
+</style>

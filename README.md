@@ -1,7 +1,7 @@
-# Astro Starter Kit: Minimal
+# Astro Starter Kit: Basics
 
 ```sh
-npm create astro@latest -- --template minimal
+npm create astro@latest -- --template basics
 ```
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
@@ -11,19 +11,47 @@ npm create astro@latest -- --template minimal
 Inside of your Astro project, you'll see the following folders and files:
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+my-portfolio/
+├─ public/
+│  ├─ img/
+│  ├─ models/
+│  └─ fonts/
+├─ src/
+│  ├─ data/
+│  │  ├─ projects.js
+│  ├─ components/
+│  │  ├─ Header.astro
+│  │  ├─ Footer.astro
+│  │  ├─ ProjectCard.astro 
+│  │  ├─ ProjectGrid.astro
+│  │  ├─ ProjectPage.astro
+│  │  ├─ ContactModal.astro 
+│  │  ├─ AboutModal.astro
+│  ├─ layouts/
+│  │  └─ Layout.astro
+│  ├─ pages/
+│  │  ├─ index.astro
+│  │  └─ projects/
+│  │    ├─ gallery3d.astro
+│  │    └─ [slug].astro
+│  ├─ scripts/
+│  │  ├─ animations/            → GSAP + ScrollTrigger
+│  │  │  ├─ projectPage.js
+│  │  │  └─ headerEffects.js
+│  │  ├─ 3d.js
+│  │  ├─ header_off_on.js
+│  │  ├─ lenis.js
+│  │  └─ gsap-setup.js
+│  └─ styles/
+│     └─ global.css
+├─ astro.config.mjs
+├─ tsconfig.json
+├─ tailwind.config.cjs
+├─ package-lock.json
+└─ package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
 ## 🧞 Commands
 

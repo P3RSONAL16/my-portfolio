@@ -1,0 +1,313 @@
+/* Imagen: más alta que la ventana para permitir el parallax sin bordes vacíos */
+.mainBannerImg {
+    transform: translateY(10%);
+    width: 100%;
+    height: 110%; /* importante: >100% para que haya margen al moverla */
+    object-fit: cover;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.4;
+}
+
+.mainBanner::before,
+.mainBanner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 6rem;
+    pointer-events: none;
+    z-index: 20;
+}
+.mainBanner::before {
+    top: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0)
+    );
+    mix-blend-mode: multiply;
+}
+.mainBanner::after {
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0)
+    );
+    mix-blend-mode: multiply;
+}
+
+
+
+/* ===================================================================== */
+/* ====================== Responsive para TABLETS ====================== */
+/* Ejemplo: iPad, Galaxy Tab, Surface, etc. (entre 431px y 900px) */
+@media (min-width: 431px) and (max-width: 900px) {
+
+    /* HEADER */
+    section.fixed div {
+        padding: 1.5rem 2rem !important;
+    }
+
+    section.fixed img {
+        width: 1.8rem !important;
+    }
+
+    /* BANNER PRINCIPAL */
+    .mainBanner {
+        height: 55vh !important;
+        margin-top: 110px !important;
+        margin-bottom: 16vw !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .projectTitle {
+        font-size: clamp(2.2rem, 10vw, 5rem) !important;
+        width: 80% !important;
+        top: 18%;
+        -webkit-text-stroke: 1px #fff;
+        word-break: break-word;
+        line-height: 1.1;
+    }
+
+    .mainBannerImg {
+        opacity: 0.45;
+    }
+
+    /* SECCIÓN: Resumen & Créditos */
+    .section-resumen {
+        flex-direction: column !important;
+        gap: 3rem !important;
+        padding: 0 6vw !important;
+    }
+
+    .section-resumen .content-appear {
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+
+    .section-resumen .content-appear > div {
+        width: 100% !important;
+    }
+
+    .section-resumen p {
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Créditos (sin sticky, adaptados a ancho completo) */
+    .credits-fixed {
+        position: relative !important;
+        width: 100% !important;
+        text-align: left;
+    }
+
+    .credits-fixed h6 {
+        font-size: 1rem !important;
+        margin-bottom: 0.8rem;
+    }
+
+    /* CONCEPT DESIGN */
+    .animate-ContentAnimation {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        padding: 0 6vw !important;
+        margin-top: 10vw !important;
+    }
+
+    .animate-ContentAnimation img {
+        width: 100%;
+        height: auto;
+        margin: 1.5rem 0;
+    }
+
+    /* SECCIÓN: Tecnologías utilizadas */
+    section.section-resumen:nth-of-type(1) {
+        flex-direction: column !important;
+        gap: 2.5rem !important;
+        padding: 0 6vw !important;
+    }
+
+    section.section-resumen:nth-of-type(1) .content-appear {
+        flex-direction: column !important;
+        gap: 2rem !important;
+    }
+
+    section.section-resumen:nth-of-type(1) p {
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* QUOTE FINAL */
+    blockquote {
+        width: 95% !important;
+        font-size: 3vw !important;
+        text-align: center !important;
+    }
+
+    .quote-left {
+        font-size: 5vw !important;
+        display: block;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    /* NEXT PROJECT */
+    section.font-Druck-Bold {
+        text-align: center !important;
+        padding: 12vh 5vw !important;
+    }
+
+    section.font-Druck-Bold h2 {
+        font-size: 2.6vw !important;
+    }
+
+    section.font-Druck-Bold span {
+        font-size: clamp(2rem, 6vw, 4rem) !important;
+    }
+}
+
+/* ========================================================================== */
+/* ==================== Responsive para móviles pequeños ==================== */
+/* Especialmente Samsung Galaxy S21 Ultra (412px ancho) */
+@media (max-width: 430px) {
+    /* HEADER */
+    section.fixed div {
+        padding: 1rem !important;
+    }
+
+    section.fixed img {
+        width: 1.5rem !important;
+    }
+
+    /* BANNER PRINCIPAL */
+    .mainBanner {
+        height: 45vh !important;
+        margin-top: 90px !important;
+        margin-bottom: 20vw !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .projectTitle {
+        font-size: clamp(1.8rem, 20vw, 3.8rem) !important; /* Más grande y adaptable */
+        margin: 0 auto !important;
+        width: 90% !important;
+        line-height: 1.1;
+        top: 20%;
+        /* transform: translateX(-50%); */
+        -webkit-text-stroke: 1px #fff;
+        word-break: break-word; /* Evita desbordes en palabras largas */
+    }
+
+    .mainBannerImg {
+        opacity: 0.5;
+    }
+
+
+    /* CONCEPT DESIGN */
+    .animate-ContentAnimation {
+        flex-direction: column !important;
+        gap: 1.5rem;
+        padding: 0 5vw;
+        margin-top: 15vw;
+    }
+
+    .animate-ContentAnimation img {
+        width: 100%;
+        height: auto;
+        margin: 1rem 0;
+    }
+
+    /* === Sección: Resumen & Créditos === */
+    .section-resumen {
+        flex-direction: column !important; /* De fila a columna */
+        gap: 2rem !important;
+        padding: 0 5vw !important;
+    }
+
+    .section-resumen .content-appear {
+        flex-direction: column !important; /* Textos uno debajo del otro */
+        gap: 1.5rem !important;
+    }
+
+    .section-resumen .content-appear > div {
+        width: 100% !important;
+    }
+
+    .section-resumen p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+
+    /* === Créditos === */
+    .credits-fixed {
+        position: relative !important;
+        width: 100% !important;
+        text-align: left;
+        /* top: 0 !important;
+        left: 0 !important;
+        opacity: 1 !important;
+        visibility: inherit !important; */
+    }
+
+    .credits-fixed h6 {
+        font-size: 0.9rem !important;
+    }
+
+    /* === Sección: Tecnologías utilizadas === */
+    section.section-resumen:nth-of-type(1) {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        padding: 0 5vw !important;
+    }
+
+    section.section-resumen:nth-of-type(1) .content-appear {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+
+    section.section-resumen:nth-of-type(1) .content-appear > div {
+        width: 100% !important;
+    }
+
+    section.section-resumen:nth-of-type(1) p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+
+
+    /* QUOTE FINAL */
+    blockquote {
+        width: 100% !important;
+        font-size: 6vw !important;
+        text-align: center !important;
+    }
+
+    .quote-left {
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    /* NEXT PROJECT */
+    section.font-Druck-Bold {
+        text-align: center !important;
+        padding: 10vh 5vw !important;
+    }
+
+    section.font-Druck-Bold h2 {
+        font-size: 4vw !important;
+    }
+
+    section.font-Druck-Bold span {
+        font-size: clamp(1.5rem, 6vw, 3rem) !important;
+    }
+}

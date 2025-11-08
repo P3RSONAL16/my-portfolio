@@ -1,0 +1,22 @@
+---
+// Layout.astro
+import "../styles/global.css";
+const { title = "M.A.J - Portfolio" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="bg-black text-white antialiased">
+    <slot name="header" />
+    <main><slot /></main>
+
+    <!-- SCRIPTS (estáticos en public/scripts, se ejecutan SOLO en navegador) -->
+    <script type="module" src="scripts/lenis.js"></script>
+    <!-- <script type="module" src="scripts/gsap-setup.js"></script> -->
+  </body>
+</html>

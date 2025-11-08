@@ -1,0 +1,146 @@
+---
+// ProjectGrid.astro
+import ProjectCard from "./ProjectCard.astro";
+import { projects } from "../data/projects.js";
+---
+
+<!-- --------- MAIN CONTENT --------- -->
+<!-- <div class="overlay fixed top-0 left-0 w-full h-full bg-black/0 z-[999] pointer-events-auto visible opacity-100"></div> -->
+
+<div class="page-with-perspective">
+  <div class="perspective-container">
+    <main class="main-container">
+      <ul class="all-projects">
+        {projects.map((project) => (
+          <ProjectCard {...project} />
+        ))}
+      </ul>
+    </main>
+  </div>
+</div>
+
+<style>
+
+/* ---------------------- ESTRUCTURA DEL COMPONENTE ---------------------- */
+/* 1) Contenedor de la lista: no ocupar 100% para que el padre pueda empujarla a la derecha */
+.all-projects {
+  width: auto;
+  max-width: 900px;         
+  margin-left: auto;       
+  margin-right: 2rem;
+  /* padding-top: 1rem; */
+  padding-bottom: 10%;
+  list-style: none;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+
+/* 2) Asegurar que cada proyecto no sea full-width */
+.project {
+  width: auto;
+  align-self: flex-end;
+}
+
+/* 3) Mejor que el anchor sea block y ocupe solo lo necesario */
+.project-container a {
+  display: inline-block; /* ok, pero mantener contenido como inline-block */
+  max-width: 100%;       /* evita overflow extremo */
+  text-align: right;
+}
+
+
+.project-container a:before,
+.project-container a:after {
+  overflow: hidden;
+  max-width: 150px;
+}
+
+/* 4) Evitar offsets negativos que rompen el layout en mobile: usa right en vez de left negativo */
+.project-container a:before {
+  content: attr(data-info);
+  position: absolute;
+  top: 20px;
+  right: calc(100% + 20px); /* sitúa la info a la izquierda del título sin romper el flujo */
+  left: auto;
+  width: 200px;
+  text-align: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: 'Akzidenz Grotesk Black';
+}
+
+.project-container a:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: calc(100% + 8px); /* línea decorativa junto a la info */
+  left: auto;
+  width: 2px;
+  height: 0.85em;
+  background-color: #fff;
+  transform: rotate(25deg);
+}
+
+/* 5) Imagen preview: posición absoluta respecto al link, no debe aumentar el ancho del li */
+.img-preview {
+  position: absolute;
+  right: calc(100% + 2rem); /* aparece a la izquierda del texto sin cambiar el ancho del li */
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+  width: 40rem;
+  height: auto;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 10%, rgba(0,0,0,0) 100%);
+}
+
+/* 6) Responsive: escalar tipografía y centrar en pantallas muy pequeñas */
+@media (max-width: 900px) {
+  .all-projects {
+    max-width: 720px;
+  }
+  .project-container a {
+    font-size: clamp(2rem, 7vw, 5rem); /* más control en mobile */
+  }
+  .project-container a:before,
+  .project-container a:after {
+    display: none;
+  }
+  .img-preview {
+    width: 24rem; /* más pequeño en mobile */
+    right: calc(100% + 1rem);
+  }
+}
+
+@media (max-width: 600px) {
+  /* En pantallas muy pequeñas quizá prefieras centrar la lista */
+  .main-container {
+    justify-content: center;
+  }
+  .all-projects {
+    margin-left: 0;
+    align-items: right;
+    text-align: right;
+    padding: 0 1rem;
+    gap: 2rem;
+  }
+  .project-container a:before,
+  .project-container a:after {
+    display: none; /* ocultar info decorativa para no romper el layout small */
+  }
+  .project-container a {
+    font-size: clamp(1.8rem, 7vw, 3.5rem);
+    transition: font-size 0.3s ease, color 0.3s ease;
+  }
+  .img-preview {
+    display: none; /* opcional: ocultar previews en XS para evitar solapamientos */
+  }
+}
+
+</style>
